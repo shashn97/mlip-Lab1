@@ -9,6 +9,7 @@ import time
 config = configparser.ConfigParser()
 config.read('config.ini')
 
+
 endpoint = config['azure_cognitive_services']['endpoint']
 
 key = config['azure_cognitive_services']['key']
