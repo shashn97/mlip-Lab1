@@ -1,4 +1,4 @@
-import os
+import configparser
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
@@ -6,8 +6,11 @@ import time
 
 
 # Get credentials from environment variables
-endpoint = os.environ.get("AZURE_COMPUTER_VISION_ENDPOINT")
-key = os.environ.get("AZURE_COMPUTER_VISION_KEY")
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+endpoint = config['azure_cognitive_services']['endpoint']
+key = config['azure_cognitive_services']['key']
 
 if not endpoint or not key:
     raise ValueError("Azure credentials are not set in environment variables.")
